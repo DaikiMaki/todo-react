@@ -5,6 +5,7 @@ import SignOut from './components/SignOut';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "./firebase";
 import List from './components/List';
+import Create from './components/Create';
 
 function App() {
   const [user] = useAuthState(auth);
@@ -12,12 +13,14 @@ function App() {
   return (
     <div>
       {user ?
-        <div>
-          <SignOut />
-          <List />
-        </div>
-        : 
-        <SignIn />}
+      <>
+        <SignOut /> 
+        <Create />
+        <List />
+      </>
+      : 
+      <SignIn />
+      }
     </div>
   );
 }
